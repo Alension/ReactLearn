@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        class Clock extends React.Component{
+            constructor(props){
+                super(props);
+                this.state={
+                    date:new Date()
+                };
+            };
+
+            componentDidMount(){
+                 this.timer1=setInterval( ()=>{                   //这里要用箭头函数，否者由于js的设计问题this指针指向错误
+                        this.setState({date:new Date()})
+                     },
+                     1000);
+            };
+
+            componentWillUnmount(){
+                clearInterval(this.timer1)
+            };
+
+            render(){
+                return (
+                    <div>
+                        <h1>it is {this.state.date.toLocaleTimeString()}</h1>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<Clock/>,document.getElementById('root'))
+    </script>
+</body>
+</html>

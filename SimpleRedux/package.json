@@ -1,0 +1,7 @@
+{
+  "name": "SimpleRedux",
+  "version": "0.0.1",
+  "dependencies": {
+    "redux": "^3.7.1"
+  }
+}
